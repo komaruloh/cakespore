@@ -81,7 +81,7 @@ class DATABASE_CONFIG {
 		'password' => 'c4k35p0r3',
 		'database' => 'cakespore',
 		'prefix' => '',
-        'schema' => 'public',
+        'schema' => 'cakespore',
 	);
 
 	var $test = array(

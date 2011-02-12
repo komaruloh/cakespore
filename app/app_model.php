@@ -32,4 +32,27 @@
  * @subpackage    cake.cake.libs.model
  */
 class AppModel extends Model {
+	/**
+	 * Check Field
+	 * 
+	 * Function to check if one table has created_by and modified_by field
+	 * so it can determine which field filled when editing or adding data
+	 * 
+	 * @version initial
+	 * @created 29Jan2011
+	 * @author Desanto W (weird2think@gmail.com)
+	 */
+	function checkByField() {
+        //Get the name of the table
+        $db =& ConnectionManager::getDataSource($this->useDbConfig);
+        $tableName = $db->fullTableName($this, false);
+
+        // cek if field created_by and modified_by is exists in current table
+        $result = $this->query("SELECT column_name FROM information_schema.columns WHERE table_name ='{$tableName}' and column_name LIKE '%ed_by';");
+        if( isset( $result[0]['COLUMNS']['column_name']) || isset($result[0][0]['column_name'])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
