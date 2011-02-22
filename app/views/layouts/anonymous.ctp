@@ -56,12 +56,10 @@
 					<div id="topnav">
 						<a href="login" class="signin"><span>Login</span></a> | <a href="#">Register</a> | <a href="#">Contact</a>
 						<fieldset id="signin_menu">
-							<?php echo $form->create('basic', array('action' => 'login')); ?>
+							<?php echo $form->create('User', array('action' => 'login')); ?>
 							<p>
-								<label for="username">Username</label>
-								<input id="username" name="username" value="" title="username" tabindex="4" type="text">
-								<label for="password">Password</label>
-								<input id="password" name="password" value="" title="password" tabindex="5" type="password">
+								<?php echo $form->input('username'); ?>
+								<?php echo $form->input('password'); ?>
 								<?php echo $html->link(__("forgot?", true), array('action'=>'resetPassword')); ?>
 							</p>
 							<p>

@@ -7,6 +7,7 @@
 
 class UserAuthComponent extends Object{
 	var $components = array('Auth', 'Session');
+	
 	function initialize(&$controller, $settings = array()) {
         $this->controller =& $controller;
     }
@@ -21,6 +22,9 @@ class UserAuthComponent extends Object{
 		return $this->Auth->user();
 	}
 	
+	function isLoggedIn() {
+		return ($this->getUserId() !== null);
+	}
 	/**
      * get user id
      * @parameter null

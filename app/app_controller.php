@@ -48,13 +48,12 @@ class AppController extends Controller {
         $this->AclFilter->auth();
         $this->set('modelName', Inflector::singularize($this->name));
 		
-        if($this->UserAuth->getUserId()) {
+        if($this->UserAuth->isLoggedIn()) {
+
             $this->layout = 'default'; //set layout with menu
             $this->set('authRealname', $this->UserAuth->getRealname());
             
             $action = $this->params['action'];
-			// form client side scripting automated via jQuery
-			$this->set('form_js', FORM_JS);
 			
 			// load javascript per model if exists 
 			$root = dirname(__FILE__);
@@ -71,11 +70,12 @@ class AppController extends Controller {
 					} else if ($action == 'edit') {
 						$this->data[Inflector::singularize($this->name)]['modified_by'] = $this->UserAuth->getUserId();
 					}
-					$this->data[Inflector::singularize($this->name)]['branch_id'] = $this->UserAuth->getBranchId();
+					//$this->data[Inflector::singularize($this->name)]['branch_id'] = $this->UserAuth->getBranchId();
 				}
 			}
         } else {
             $this->layout = 'anonymous'; //set layout without menu
         }
+		
     }
 }

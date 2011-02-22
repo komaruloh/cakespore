@@ -213,8 +213,9 @@ dl .altrow {
 	background: #f4f4f4;
 }
 dt {
+	display: list-item;
 	font-weight: bold;
-	padding-left: 4px;
+	padding-left: 8px;
 	vertical-align: top;
 }
 dd {

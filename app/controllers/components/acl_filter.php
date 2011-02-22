@@ -23,18 +23,20 @@ class AclFilterComponent extends Object {
         //Configure AuthComponent
         $this->controller->Auth->authorize = 'actions';
         $this->controller->Auth->loginAction = array('controller' => 'users', 'action' => 'login');
-        $this->controller->Auth->logoutRedirect = array('controller' => 'users', 'action' => 'anon');
-        $this->controller->Auth->loginRedirect = array('controller' => 'home', 'action' => 'index');        
-        $this->controller->Auth->actionPath = 'controllers/';
+        $this->controller->Auth->logoutRedirect = array('controller' => 'users', 'action' => 'login');
+        $this->controller->Auth->loginRedirect = array('controller' => 'homes', 'action' => 'index');        
+        $this->controller->Auth->actionPath = 'Controllers/';
         $this->controller->Auth->userScope = array('User.active' => '1');
         $this->controller->Auth->autoRedirect = false;
         
-        if($this->controller->Auth->user() && $this->controller->Auth->user('group_id') == 1) {
+        if($this->controller->Auth->user() && $this->controller->Auth->user('group_id') == 3) {
             // Group: Admin still dont know how to not hardcode this
             $this->controller->Auth->allow('*'); 
             
         } else {
+			
             if($this->controller->Auth->user()) {
+				
                 if(($this->controller->name=='Menus' && $this->controller->action=='show_menus') || 
                    ($this->controller->name=='Home' && $this->controller->action=='index')) {
 					
@@ -44,7 +46,7 @@ class AclFilterComponent extends Object {
                 } else {
                     $groupId = $this->controller->Auth->user('group_id');
                     $thisControllerNode = $this->controller->Acl->Aco->node($this->controller->Auth->actionPath.$this->controller->name);
-                    
+
                     if($thisControllerNode) {
                         $thisControllerNode = $thisControllerNode['0'];
 
