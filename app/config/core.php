@@ -91,7 +91,7 @@
  * Turn off all caching application-wide.
  *
  */
-	//Configure::write('Cache.disable', true);
+	Configure::write('Cache.disable', true);
 
 /**
  * Enable cache checking.
@@ -200,12 +200,12 @@
 /**
  * A random string used in security hashing methods.
  */
-	Configure::write('Security.salt', 'bb7e8a6dd529c61c28ba471371b35c2a42be2118');
+	Configure::write('Security.salt', 'cakespore');
 
 /**
  * A random numeric string (digits only) used to encrypt/decrypt strings.
  */
-	Configure::write('Security.cipherSeed', '1292157607');
+	Configure::write('Security.cipherSeed', '23764237');
 
 /**
  * Apply timestamps with the last modified time to static assets (js, css, images).

@@ -54,23 +54,22 @@
             <div class="page">
 				<div id="content">
 					<div id="topnav">
-						<a href="#"><?php echo $authRealname; ?></a> | <?php echo $html->link('Logout','/users/logout') ?> | <a href="#">Contact</a>
+						<a href="login" class="signin"><span>Login</span></a> | <a href="#">Register</a> | <a href="#">Contact</a>
+						<fieldset id="signin_menu">
+							<?php echo $form->create('User', array('action' => 'login')); ?>
+							<p>
+								<?php echo $form->input('username'); ?>
+								<?php echo $form->input('password'); ?>
+								<?php echo $html->link(__("forgot?", true), array('action'=>'resetPassword')); ?>
+							</p>
+							<p>
+								<input id="signin_submit" value="Sign in" tabindex="6" type="submit">
+							</p>
+							<?php echo $form->end(); ?>
+						  </fieldset>
 					</div>
 				</div>
-                <div id="nav">
-                    <!-- skiplink anchor: navigation -->
-                    <a id="navigation" name="navigation"></a>
-                    <div class="hlist">
-                    <!-- main navigation: horizontal list -->
-                        <ul>
-                            <li class="active"><strong>Button 1</strong></li>
-                            <li><a href="#">Button 2</a></li>
-                            <li><a href="#">Button 3</a></li>
-                            <li><a href="#">Button 4</a></li>
-                            <li><a href="#">Button 5</a></li>
-                        </ul>
-                    </div>
-                </div>
+                
                 <div id="teaser">
                     <p>"This is teaser line, which is explain briefly what module you use"</p>
                     <p>"Another line for teaser line..."</p>
